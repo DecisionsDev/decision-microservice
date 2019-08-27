@@ -1,0 +1,7 @@
+{
+  "outputDirectory" : "./",
+  "xomPath" : "./hello-xom-1.0.0.jar",
+  "ruleProject" : "./helloWorldProject/Hello Main Service/",
+  "deploymentName" : "simple dep",
+  "ruleSetPath" : "/simple_dep/1.0/simple_dop/1.0"
+}

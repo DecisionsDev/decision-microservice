@@ -1,0 +1,10 @@
+{
+  "outputDirectory" : "hello",
+  "xomPath" : "./samples/rulesetApi/helloWorld/hello-xom-1.0.0.jar",
+  "ruleProject" : "./samples/rulesetApi/helloWorld/helloWorldProject/Hello Main Service/",
+  "deploymentName" : "simple dep",
+  "ruleSetPath" : "/simple_dep/1.0/simple_dop/1.0",
+  "additionalProperties" : {
+    "servicePath" : "/test/test"
+  }
+}

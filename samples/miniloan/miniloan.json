@@ -1,0 +1,6 @@
+{
+  "outputDirectory" : "./",
+  "xomPath" : "./miniloan-xom.jar",
+  "ruleAppPath" : "./ruleApp_miniloanruleapp_1.0.jar",
+  "ruleSetPath" : "/miniloanruleapp/1.0/miniloanrules/1.0"
+}

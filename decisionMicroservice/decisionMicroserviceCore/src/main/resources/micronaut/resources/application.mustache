@@ -1,0 +1,17 @@
+micronaut:
+    application:
+        name: micro-decision-service
+    server:
+        port: {{serverPort}}
+jackson:
+    dateFormat: {{{dateFormat}}}
+    serializationInclusion: nonNull
+    serialization:
+        writeDatesAsTimestamps: false
+    deserialization:
+        adjustDatesToContextTimeZone: true
+    bean-introspection-module: true
+endpoints:
+    health:
+        enabled: true
+

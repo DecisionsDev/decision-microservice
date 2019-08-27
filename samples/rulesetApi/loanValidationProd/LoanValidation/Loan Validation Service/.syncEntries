@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="jdbc/ilogDataSource" login="Paul" url="http://odmqabld19r.francelab.fr.ibm.com:9080/teamserver"/>
+<entry baseType="DecisionOperation" checksum="195724306" projectName="Loan Validation Service" qualifiedName="loan validation production" sourceCS="D484B91EC92CDE948101C812B8D0815A" targetCS="195724306" type="DecisionOperation" uuid="7e5cbd47-fb79-4430-a17c-85ec1b2ebe6c"/>
+<entry baseType="DecisionOperation" checksum="504905345" projectName="Loan Validation Service" qualifiedName="loan validation with score and grade" sourceCS="C051010DCE27B6F07B798422B30E0305" targetCS="504905345" type="DecisionOperation" uuid="9017e68b-1f53-496e-998f-5d41393e1c84"/>
+<entry baseType="DeploymentConfiguration" checksum="3801780253" projectName="Loan Validation Service" qualifiedName="production deployment" sourceCS="B1ABA1A0D692B82D224ED90DA9EB9834" targetCS="3801780253" type="DeploymentConfiguration" uuid="e97915be-0315-444e-9102-58cfa5f7bc03"/>
+<entry baseType="DeploymentConfiguration" checksum="478821818" projectName="Loan Validation Service" qualifiedName="test deployment" sourceCS="07369BE98FB780B91F936082F7F7F29F" targetCS="478821818" type="DeploymentConfiguration" uuid="1b0002ea-1a08-4d78-a322-b9de0b255169"/>
+<entry baseType="Query" checksum="77170723" projectName="Loan Validation Service" qualifiedName="validated rules query" sourceCS="4E47D296868F2B04693DA41FE05DA237" targetCS="77170723" type="Query" uuid="2ea0f1ac-f84b-4ae6-a617-c361168d274d"/>
+<entry baseType="Resource" checksum="2977781481" projectName="Loan Validation Service" qualifiedName="META-INF/deployment.xml" sourceCS="308142D124091BD0C5CBE825ABCB27E0" targetCS="2977781481" type="Resource" uuid="META-INF/deployment.xml"/>
+<entry baseType="Ruleflow" checksum="1199112784" projectName="Loan Validation Service" qualifiedName="loanvalidation" sourceCS="E4C770062785FF577B2443F73F36429E" targetCS="1199112784" type="Ruleflow" uuid="f5dc0b49-f2a1-467d-abb0-059d6e0d5c62"/>
+<entry baseType="RuleProjectInfo" checksum="3297887961" projectName="Loan Validation Service" qualifiedName="Loan Validation Service" sourceCS="424679C7DA0EEB9BF350073B8C084537" targetCS="3297887961" type="RuleProjectInfo" uuid="4ea8ed3f-98a0-4b25-853c-6cc857215ae8"/>
+</teamserver>
+</teamservers>

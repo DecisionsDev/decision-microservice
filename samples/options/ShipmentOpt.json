@@ -1,0 +1,6 @@
+{
+  "outputDirectory" : "Shipment",
+  "xomPath" : "./samples/rulesetApi/shipment/Shipment_Pricing-decisionmodel-xom.jar",
+  "ruleAppPath" : "./samples/rulesetApi/shipment/ruleApp_Shipment_Pricing_RuleApp_1.0.jar",
+  "ruleSetPath" : "/Shipment_Pricing_RuleApp/1.0/Shipment_Pricing/1.0"
+}

@@ -1,0 +1,5 @@
+{
+  "outputDirectory" : "loanscore",
+  "xomPath" : "./samples/rulesetApi/loanValidationProd/loan-validation-xom.jar",
+  "rulesetArchivePath" : "samples/rulesetApi/loanValidationScore/ruleset.dsar"
+}

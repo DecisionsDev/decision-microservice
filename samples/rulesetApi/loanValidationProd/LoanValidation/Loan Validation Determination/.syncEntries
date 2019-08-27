@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="jdbc/ilogDataSource" login="Paul" url="http://odmqabld19r.francelab.fr.ibm.com:9080/teamserver"/>
+<entry baseType="BRLRule" checksum="3336331964" projectName="Loan Validation Determination" qualifiedName="eligibility.approval" sourceCS="F877A111C98FA329E7A7C8E76EB7CB5B" targetCS="3336331964" type="BRLRule" uuid="350b2987-2b8e-4a0c-99fe-d06ab0af90ba"/>
+<entry baseType="BRLRule" checksum="2843184366" projectName="Loan Validation Determination" qualifiedName="eligibility.checkCreditScore" sourceCS="7F025101AB0EA856E3CD7F4D58D22722" targetCS="2843184366" type="BRLRule" uuid="c8dafd02-cb18-4a33-ba0c-ec0dfd12e8b8"/>
+<entry baseType="BRLRule" checksum="2762481120" projectName="Loan Validation Determination" qualifiedName="eligibility.checkIncome" sourceCS="3561BF522C67FF52974461C9B5C527CD" targetCS="2762481120" type="BRLRule" uuid="c7be44d1-ca4c-4108-92e2-3816134e66a2"/>
+<entry baseType="BRLRule" checksum="3128575891" projectName="Loan Validation Determination" qualifiedName="insurance.defaultInsurance" sourceCS="114523C28614FAEE82D5E10773972B46" targetCS="3128575891" type="BRLRule" uuid="842c35bf-47f4-41f5-a6f8-f43dfe302609"/>
+<entry baseType="BRLRule" checksum="478478634" projectName="Loan Validation Determination" qualifiedName="insurance.unvalidated action rule" sourceCS="098793AB47DAE0C68BDDF85DBF0A56A0" targetCS="478478634" type="BRLRule" uuid="67bf4528-7e1c-4ef0-8089-3407e1d0c224"/>
+<entry baseType="DecisionOperation" checksum="2056052439" projectName="Loan Validation Determination" qualifiedName="eligibility" sourceCS="DAC93C9F6478B65CB439B03345F7DA95" targetCS="2056052439" type="DecisionOperation" uuid="bfd94025-3f29-48be-81b9-9eb2676f252f"/>
+<entry baseType="DecisionTable" checksum="995697543" projectName="Loan Validation Determination" qualifiedName="eligibility.grade" sourceCS="4C6CAE67B4E254FA6838D4B7B530E5A1" targetCS="995697543" type="DecisionTable" uuid="48827069-467c-4c12-8d23-06eb9d0ba48f"/>
+<entry baseType="DecisionTable" checksum="531441323" projectName="Loan Validation Determination" qualifiedName="insurance.insurance" sourceCS="20D16CE9F3674319EBC5C100CA1F6E43" targetCS="531441323" type="DecisionTable" uuid="639203c5-bd7d-4696-bb7e-eee46e008cb0"/>
+<entry baseType="Ruleflow" checksum="1206402720" projectName="Loan Validation Determination" qualifiedName="eligibilityFlow" sourceCS="B6FCB05793DCA6D293CFC2983687CB7E" targetCS="1206402720" type="Ruleflow" uuid="966338e1-cfde-4e21-861b-3a7335ff0df2"/>
+<entry baseType="RulePackageInfo" checksum="3777598136" projectName="Loan Validation Determination" qualifiedName="eligibility" sourceCS="B4E22EF30CEE488BCE73F91A5753E2BB" targetCS="3777598136" type="RulePackageInfo" uuid="ca657f70-727c-407b-b460-7110aee225e9"/>
+<entry baseType="RulePackageInfo" checksum="3393659151" projectName="Loan Validation Determination" qualifiedName="insurance" sourceCS="B7C69E2745EF54A72349D2ADF7A20837" targetCS="3393659151" type="RulePackageInfo" uuid="270c3761-353a-44c7-b9ca-0fd08ba926d9"/>
+<entry baseType="RuleProjectInfo" checksum="625376307" projectName="Loan Validation Determination" qualifiedName="Loan Validation Determination" sourceCS="E11EC075594F2F30C2C6106A170B94B0" targetCS="625376307" type="RuleProjectInfo" uuid="a2912fa3-51a9-4041-bc88-d100f2d705ba"/>
+</teamserver>
+</teamservers>

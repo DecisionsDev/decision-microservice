@@ -1,0 +1,138 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "API to invoke the execution of the decision service operation Shipment_Pricing.",
+    "version" : "1.0.0",
+    "title" : "Shipment_Pricing API"
+  },
+  "host" : "localhost:9060",
+  "basePath" : "/DecisionService/rest",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/Shipment_Pricing_RuleApp/Shipment_Pricing" : {
+      "post" : {
+        "summary" : "Invokes the execution of the decision service operation Shipment_Pricing.",
+        "description" : "Executes the decision service operation Shipment_Pricing with the path /Shipment_Pricing_RuleApp/Shipment_Pricing.",
+        "operationId" : "callShipment_PricingDecisionServiceOperation",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "Request",
+          "description" : "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution.",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution.",
+            "schema" : {
+              "$ref" : "#/definitions/Response"
+            }
+          },
+          "default" : {
+            "description" : "Error occurring when invoking the execution of the decision service operation.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Response" : {
+      "type" : "object",
+      "properties" : {
+        "__DecisionID__" : {
+          "type" : "string",
+          "description" : "Unique identifier representing the execution of the decision service operation. If it is not specified, it will be computed automatically."
+        },
+        "Price" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      },
+      "description" : "Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution."
+    },
+    "Request" : {
+      "type" : "object",
+      "properties" : {
+        "__DecisionID__" : {
+          "type" : "string",
+          "description" : "Unique identifier representing the execution of the decision service operation. If it is not specified, it will be computed automatically."
+        },
+        "Customer" : {
+          "type" : "string",
+          "enum" : [ "Bronze", "Silver", "Gold" ]
+        },
+        "Distance" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "Method" : {
+          "$ref" : "#/definitions/Method"
+        },
+        "Shipment" : {
+          "$ref" : "#/definitions/Shipment"
+        }
+      },
+      "description" : "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution."
+    },
+    "Error" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "HTTP error code."
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "Error message."
+        },
+        "details" : {
+          "type" : "string",
+          "description" : "Detailed error message."
+        },
+        "errorCode" : {
+          "type" : "string",
+          "description" : "Product error code."
+        }
+      },
+      "description" : "Error occurring when invoking the execution of the decision service operation."
+    },
+    "Shipment" : {
+      "type" : "object",
+      "properties" : {
+        "weight" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "size" : {
+          "type" : "string",
+          "enum" : [ "Letter", "Pack1", "Pack2", "Pack3" ]
+        }
+      }
+    },
+    "Method" : {
+      "type" : "object",
+      "properties" : {
+        "pickup" : {
+          "type" : "string",
+          "enum" : [ "Pickup", "Dropoff" ]
+        },
+        "transport" : {
+          "type" : "string",
+          "enum" : [ "Air", "Ground" ]
+        },
+        "nextDay" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      }
+    }
+  }
+}

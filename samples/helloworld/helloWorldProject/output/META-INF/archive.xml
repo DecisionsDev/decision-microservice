@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleapp-archive xsi:noNamespaceSchemaLocation="http://schemas.ilog.com/JRules/1.2/RuleAppArchive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ruleapp>
+    <ruleapp-display-name>simple dep</ruleapp-display-name>
+    <ruleapp-name>simple_dep</ruleapp-name>
+    <ruleapp-version>1.0</ruleapp-version>
+    <creation-date>1554969250634</creation-date>
+    <ruleapp-description></ruleapp-description>
+    <ruleset>
+      <ruleset-display-name>simple dop</ruleset-display-name>
+      <ruleset-name>simple_dop</ruleset-name>
+      <ruleset-version>1.0</ruleset-version>
+      <creation-date>1554969250641</creation-date>
+      <ruleset-description></ruleset-description>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine.version</ruleset-property-name>
+        <ruleset-property-value>1.40.7</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>prop1</ruleset-property-name>
+        <ruleset-property-value>val1</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine</ruleset-property-name>
+        <ruleset-property-value>de</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.uuid</ruleset-property-name>
+        <ruleset-property-value>f809b083-fca2-4bbb-a9c2-c0d849f7b459</ruleset-property-value>
+      </ruleset-property>
+    </ruleset>
+    <ruleset>
+      <ruleset-display-name>simple dop2</ruleset-display-name>
+      <ruleset-name>simple_dop2</ruleset-name>
+      <ruleset-version>1.0</ruleset-version>
+      <creation-date>1554969250651</creation-date>
+      <ruleset-description></ruleset-description>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine.version</ruleset-property-name>
+        <ruleset-property-value>1.40.7</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine</ruleset-property-name>
+        <ruleset-property-value>de</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.uuid</ruleset-property-name>
+        <ruleset-property-value>0117eaaa-e6d4-410d-a66c-40b4709f72e1</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>prop2b</ruleset-property-name>
+        <ruleset-property-value>val2b</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>prop2a</ruleset-property-name>
+        <ruleset-property-value>val2a</ruleset-property-value>
+      </ruleset-property>
+    </ruleset>
+  </ruleapp>
+</ruleapp-archive>

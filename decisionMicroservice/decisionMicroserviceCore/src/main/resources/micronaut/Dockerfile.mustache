@@ -1,0 +1,17 @@
+FROM {{buildImage}} as builder
+
+ENV ODMLIB ./lib
+COPY . .
+RUN ./build.sh
+
+
+FROM openjdk:8-jdk-alpine
+
+VOLUME /tmp
+WORKDIR /execute
+
+COPY --from=builder target/decision.service-1.0.jar /artifact/app.jar
+
+EXPOSE {{serverPort}}
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/artifact/app.jar"]

@@ -1,0 +1,12 @@
+
+property loadGetterSetterAsProperties "true"
+property origin "xom:/simple BOM//simple XOM"
+property uuid "147f2302-e59a-49d0-b9f3-ab3b0a88eb74"
+package com.ibm.test;
+
+
+public class Foo
+{
+    public Foo();
+}
+

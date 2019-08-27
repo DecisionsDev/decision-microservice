@@ -1,0 +1,5 @@
+{
+  "xomPath" : "./samples/rulesetApi/miniloan/miniloan-xom.jar",
+  "ruleAppPath" : "./samples/rulesetApi/miniloan/ruleApp_miniloanruleapp_1.0.jar",
+  "ruleSetPath" : "/miniloanruleapp/1.0/miniloanrules/1.0"
+}

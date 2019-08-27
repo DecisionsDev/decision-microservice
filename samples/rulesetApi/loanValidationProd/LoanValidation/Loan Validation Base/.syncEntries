@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="jdbc/ilogDataSource" login="Paul" url="http://odmqabld19r.francelab.fr.ibm.com:9080/teamserver"/>
+<entry baseType="B2XMapping" checksum="2785692706" projectName="Loan Validation Base" qualifiedName="model" sourceCS="167878DE85E7C4CD012F3B2C571B5B37" targetCS="2785692706" type="B2XMapping" uuid="81640342-7aa9-4c1a-867e-ee6bc21dba20"/>
+<entry baseType="BusinessObjectModel" checksum="2785692706" projectName="Loan Validation Base" qualifiedName="model" sourceCS="798A5EF5105BC0A5CFFA61B7666B9766" targetCS="2785692706" type="BusinessObjectModel" uuid="a5f8bd3d-d967-41bb-94cb-454672e27811"/>
+<entry baseType="Resource" checksum="3654467789" projectName="Loan Validation Base" qualifiedName="xom-libraries/loan-validation-xom.zip" sourceCS="161C40C971761AA32E69F8B7966F5FCD" targetCS="3654467789" type="Resource" uuid="xom-libraries/loan-validation-xom.zip"/>
+<entry baseType="RuleProjectInfo" checksum="3792950864" projectName="Loan Validation Base" qualifiedName="Loan Validation Base" sourceCS="712156B700722C07455FC2EB6ED80714" targetCS="3792950864" type="RuleProjectInfo" uuid="95bee8f8-0a4f-4533-ad36-0edac68b228b"/>
+<entry baseType="VariableSet" checksum="3924300122" projectName="Loan Validation Base" qualifiedName="parameters" sourceCS="FE9515E1D0FC1A6C0F51704797E601DD" targetCS="3924300122" type="VariableSet" uuid="3abc737a-ba41-4dcf-a7d1-012b9484f9f8"/>
+<entry baseType="VariableSet" checksum="2470290171" projectName="Loan Validation Base" qualifiedName="ruleset variables" sourceCS="29014B788B577206346EC6028BA06D46" targetCS="2470290171" type="VariableSet" uuid="66f69a65-d7fa-4596-b8ad-08e837c89800"/>
+<entry baseType="Vocabulary" checksum="2785692706" projectName="Loan Validation Base" qualifiedName="model_en" sourceCS="4A164922D4E1089842A52E45804FDC78" targetCS="2785692706" type="Vocabulary" uuid="298ef717-efd8-4b46-9bfc-28f2f82612b0"/>
+</teamserver>
+</teamservers>

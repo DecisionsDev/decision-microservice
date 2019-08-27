@@ -1,0 +1,17 @@
+FROM {{buildImage}} as builder
+
+ENV ODMLIB ./lib
+COPY . .
+RUN ./build.sh
+
+
+FROM ibmjava:8-jre
+
+VOLUME /tmp
+WORKDIR /execute
+
+COPY --from=builder target/swagger-spring-1.0.0.jar /artifact/app.jar
+
+EXPOSE {{serverPort}}
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/artifact/app.jar"]

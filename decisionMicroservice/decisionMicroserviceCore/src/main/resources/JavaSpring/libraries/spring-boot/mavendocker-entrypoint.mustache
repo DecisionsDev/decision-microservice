@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+export MAVEN_OPTS=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
+
+mvn -B install:install-file -Dfile=${ODMLIB}/j2ee_connector-1_5-fr.jar -DgroupId=j2ee_connector -DartifactId=j2ee_connector -Dversion=1.0.0 -Dpackaging=jar
+
+mvn -B install:install-file -Dfile=${ODMLIB}/jrules-engine.jar -DgroupId=jrules-engine -DartifactId=jrules-engine -Dversion=1.0.0 -Dpackaging=jar
+
+mvn -B install:install-file -Dfile=${ODMLIB}/jrules-res-execution.jar -DgroupId=jrules-res-execution -DartifactId=jrules-res-execution -Dversion=1.0.0 -Dpackaging=jar
+
+mvn -B install:install-file -Dfile=${ODMLIB}/jrules-res-manage-tools.jar -DgroupId=jrules-res-manage-tool -DartifactId=jrules-res-manage-tool -Dversion=1.0.0 -Dpackaging=jar
+
+mvn -B  install:install-file -Dfile={{ruleAppPath}} -DgroupId=ruleApp -DartifactId=ruleApp -Dversion=1.0.0 -Dpackaging=jar
+mvn -B  install:install-file -Dfile={{xomPath}} -DgroupId=xom -DartifactId=xom -Dversion=1.0.0 -Dpackaging=jar
+
+mvn -B clean package
+
+echo project successfully built

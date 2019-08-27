@@ -1,0 +1,5 @@
+# Vocabulary Properties
+uuid = 61531823-d53b-41f6-b581-b1d782e05fad
+
+# com.ibm.test.Foo
+com.ibm.test.Foo#concept.label = foo

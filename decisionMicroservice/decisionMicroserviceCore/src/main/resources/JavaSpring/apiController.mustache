@@ -1,0 +1,214 @@
+package {{package}};
+
+{{^jdk8}}
+{{#imports}}import {{import}};
+{{/imports}}
+{{/jdk8}}
+{{^isDelegate}}
+import com.fasterxml.jackson.databind.ObjectMapper;
+{{/isDelegate}}
+{{^jdk8}}
+import io.swagger.annotations.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+{{/jdk8}}
+import org.springframework.stereotype.Controller;
+{{^jdk8}}
+import org.springframework.web.bind.annotation.RequestBody;
+import javax.annotation.PostConstruct;
+
+import ilog.rules.res.model.IlrPath;
+import ilog.rules.res.session.IlrJ2SESessionFactory;
+import ilog.rules.res.session.IlrSessionRequest;
+import ilog.rules.res.session.IlrSessionResponse;
+import ilog.rules.res.session.IlrStatelessSession;
+import ilog.rules.res.session.config.IlrSessionFactoryConfig;
+import ilog.rules.res.session.config.IlrXUConfig;
+import static ilog.rules.res.session.config.IlrPersistenceType.MEMORY;
+
+
+import java.lang.reflect.Field;
+import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
+    {{#useBeanValidation}}
+import javax.validation.Valid;
+    {{/useBeanValidation}}
+{{/jdk8}}
+{{^isDelegate}}
+import javax.servlet.http.HttpServletRequest;
+    {{#jdk8}}
+import java.util.Optional;
+    {{/jdk8}}
+{{/isDelegate}}
+{{^jdk8-no-delegate}}
+    {{#useOptional}}
+import java.util.Optional;
+    {{/useOptional}}
+{{/jdk8-no-delegate}}
+{{^jdk8}}
+    {{^isDelegate}}
+    {{/isDelegate}}
+import java.util.List;
+    {{#async}}
+import java.util.concurrent.Callable;
+    {{/async}}
+{{/jdk8}}
+{{>generatedAnnotation}}
+@Controller
+{{#operations}}
+public class {{classname}}Controller implements {{classname}} {
+
+{{#isDelegate}}
+    private final {{classname}}Delegate delegate;
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public {{classname}}Controller({{classname}}Delegate delegate) {
+        this.delegate = delegate;
+    }
+    {{#jdk8}}
+
+    @Override
+    public {{classname}}Delegate getDelegate() {
+        return delegate;
+    }
+    {{/jdk8}}
+{{/isDelegate}}
+{{^isDelegate}}
+    {{^jdk8}}
+    private static final Logger log = LoggerFactory.getLogger({{classname}}Controller.class);
+
+    {{/jdk8}}
+    private final ObjectMapper objectMapper;
+
+    private final HttpServletRequest currentRequest;
+
+    private IlrJ2SESessionFactory factory;
+
+    @PostConstruct
+    public void init() throws Exception{
+        IlrSessionFactoryConfig factoryConfig = IlrJ2SESessionFactory.createDefaultConfig();
+        IlrXUConfig xuConfig = factoryConfig.getXUConfig();
+        xuConfig.setLogAutoFlushEnabled(true);
+        xuConfig.getPersistenceConfig().setPersistenceType(MEMORY);
+        xuConfig.getManagedXOMPersistenceConfig().setPersistenceType(MEMORY);
+        xuConfig.getConnectionPoolConfig().setMaxSize({{poolSize}});
+        factory = new IlrJ2SESessionFactory(factoryConfig);
+
+    }
+
+    @org.springframework.beans.factory.annotation.Autowired
+    public {{classname}}Controller(ObjectMapper objectMapper, HttpServletRequest request) {
+        this.objectMapper = objectMapper;
+        this.currentRequest = request;
+    }
+    {{#jdk8}}
+
+    @Override
+    public Optional<ObjectMapper> getObjectMapper() {
+        return Optional.ofNullable(objectMapper);
+    }
+
+    @Override
+    public Optional<HttpServletRequest> getRequest() {
+        return Optional.ofNullable(request);
+    }
+    {{/jdk8}}
+
+{{/isDelegate}}
+{{^jdk8}}
+{{#operation}}
+    public {{#async}}Callable<{{/async}}ResponseEntity<Map<String,Object>>{{#async}}>{{/async}} {{operationId}}({{#allParams}}{{>queryParams}}{{>pathParams}}{{>headerParams}}{{>bodyParams}}{{>formParams}}{{#hasMore}},{{/hasMore}}{{/allParams}}) {
+        {{^isDelegate}}
+        {{^async}}
+        String accept = currentRequest.getHeader("Accept");
+        {{#examples}}
+        if (accept != null && accept.contains("{{{contentType}}}")) {
+            try {
+                log.info("rule execution");
+
+                IlrSessionRequest sessionRequest = factory.createRequest();
+                sessionRequest.setRulesetPath(IlrPath.parsePath("{{rulesetPath}}"));
+                sessionRequest.setForceUptodate(true);
+
+                IlrStatelessSession session = factory.createStatelessSession();
+
+                Map<String,Object> inputParameters = requestToMap(request);
+
+                String decisionId = null;
+                if(inputParameters.containsKey("__DecisionID__")){
+                    decisionId = (String)inputParameters.get("__DecisionID__");
+                    inputParameters.remove("__DecisionID__");
+                }
+
+                if(inputParameters.containsKey("decisionID_")){
+                    inputParameters.put("decisionID_",decisionId);
+                }
+
+                inputParameters.remove("__TraceFilter__");
+                sessionRequest.setInputParameters(inputParameters);
+
+                IlrSessionResponse sessionResponse = session.execute(sessionRequest);
+                Map<String,Object> result = sessionResponse.getOutputParameters();
+
+                if (decisionId !=null){
+                    result.put("__DecisionID__",decisionId);
+                }
+
+                result.remove("ilog.rules.firedRulesCount");
+                result.values().removeAll(Collections.singleton(null));
+                return new ResponseEntity<Map<String,Object>>(result, HttpStatus.OK);
+            } catch (Exception e) {
+                log.error("Couldn't serialize response for content type {{{contentType}}}", e);
+                return new ResponseEntity<Map<String,Object>>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        {{/examples}}
+        return new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+        {{/async}}
+        {{#async}}
+        return new Callable<ResponseEntity<{{>returnTypes}}>>() {
+            @Override
+            public ResponseEntity<{{>returnTypes}}> call() {
+                String accept = currentRequest.getHeader("Accept");
+                {{#examples}}
+                if (accept != null && accept.contains("{{{contentType}}}")) {
+                    try {
+                        log.info("rule execution")
+                        return new ResponseEntity<{{>returnTypes}}>(objectMapper.readValue("{{#lambdaRemoveLineBreak}}{{#lambdaEscapeDoubleQuote}}{{{example}}}{{/lambdaEscapeDoubleQuote}}{{/lambdaRemoveLineBreak}}", {{>exampleReturnTypes}}.class), HttpStatus.NOT_IMPLEMENTED);
+                    } catch (IOException e) {
+                        log.error("Couldn't serialize response for content type {{{contentType}}}", e);
+                        return new ResponseEntity<{{>returnTypes}}>(HttpStatus.INTERNAL_SERVER_ERROR);
+                    }
+                }
+
+                {{/examples}}
+                return new ResponseEntity<{{>returnTypes}}>(HttpStatus.BAD_REQUEST);
+            }
+        };
+        {{/async}}
+        {{/isDelegate}}
+        {{#isDelegate}}
+        return delegate.{{operationId}}({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
+        {{/isDelegate}}
+    }
+
+    public static Map<String, Object> requestToMap(Request obj) {
+        Map<String, Object> map = new HashMap<>();
+        for (Field field : obj.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            try { map.put(field.getName(), field.get(obj)); } catch (Exception e) { }
+        }
+        return map;
+    }
+
+
+{{/operation}}
+{{/jdk8}}
+}
+{{/operations}}
+

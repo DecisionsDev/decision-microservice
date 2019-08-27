@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+id=$(docker run -d -p {{serverPort}}:{{serverPort}} {{dockerName}})
+echo $id

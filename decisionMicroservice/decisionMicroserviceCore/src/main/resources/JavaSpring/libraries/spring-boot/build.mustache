@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo starting the project build
+
+docker build  -t {{dockerName}} .
+
+echo docker image successfully built
+echo to launch docker image use the following command
+echo docker run -p \<port\>:{{serverPort}} {{dockerName}}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="jdbc/ilogDataSource" login="Paul" url="http://odmqabld19r.francelab.fr.ibm.com:9080/teamserver"/>
+<entry baseType="BRLRule" checksum="430108531" projectName="Loan Validation Check" qualifiedName="validation.borrower.checkAge" sourceCS="E961F6BBA12F235AC0F69C971DE9E3EF" targetCS="430108531" type="BRLRule" uuid="b0361335-f157-4660-a3dc-146c8e301ddb"/>
+<entry baseType="BRLRule" checksum="3002605279" projectName="Loan Validation Check" qualifiedName="validation.borrower.checkName" sourceCS="1BEC7B66179BE922C63E1D94BB690DEA" targetCS="3002605279" type="BRLRule" uuid="c5b9e0ce-c668-4a77-9f0a-8ea444e459e0"/>
+<entry baseType="BRLRule" checksum="359982118" projectName="Loan Validation Check" qualifiedName="validation.borrower.checkSSNareanumber" sourceCS="9369A989E9BC617A726EAB3F3DABE285" targetCS="359982118" type="BRLRule" uuid="3d0baca6-b708-4be4-893a-fa988452dfb9"/>
+<entry baseType="BRLRule" checksum="1216439988" projectName="Loan Validation Check" qualifiedName="validation.borrower.checkSSNdigits" sourceCS="BBC3B5E6A75C5F69E4F58C8E22694C69" targetCS="1216439988" type="BRLRule" uuid="85980264-7328-45e2-bc8b-fc8dbbf429c9"/>
+<entry baseType="BRLRule" checksum="2745724778" projectName="Loan Validation Check" qualifiedName="validation.borrower.checkZipcode" sourceCS="4DBC03962EE95101DC6C143BF574B69C" targetCS="2745724778" type="BRLRule" uuid="f7871a3e-5f1e-4d7d-b235-4e6129919c57"/>
+<entry baseType="BRLRule" checksum="109159459" projectName="Loan Validation Check" qualifiedName="validation.loan.checkAmount" sourceCS="34F051AEBF4CA1F5A370482BB4CD0A30" targetCS="109159459" type="BRLRule" uuid="e9c4e688-8ece-4347-bc80-59347e408398"/>
+<entry baseType="RulePackageInfo" checksum="4191617738" projectName="Loan Validation Check" qualifiedName="validation" sourceCS="CE5F92CA3B1DCCEEF9BA84A7E184DAF1" targetCS="4191617738" type="RulePackageInfo" uuid="278f8627-849d-4dd4-b5a0-feda2ecf3c5a"/>
+<entry baseType="RulePackageInfo" checksum="566043891" projectName="Loan Validation Check" qualifiedName="validation.borrower" sourceCS="E2CC84D54654371286280437E1744236" targetCS="566043891" type="RulePackageInfo" uuid="d73ae58b-f6c9-41e2-8e2e-1160f3e965db"/>
+<entry baseType="RulePackageInfo" checksum="407958999" projectName="Loan Validation Check" qualifiedName="validation.loan" sourceCS="FE21F523AD15A4C7984CA4C94662C46A" targetCS="407958999" type="RulePackageInfo" uuid="d964a314-487c-43ef-9940-b0726a8fc55f"/>
+<entry baseType="RuleProjectInfo" checksum="1550466166" projectName="Loan Validation Check" qualifiedName="Loan Validation Check" sourceCS="53E56BD04FEF2CD1EFDF64295F8F1AD7" targetCS="1550466166" type="RuleProjectInfo" uuid="359be0d1-38c8-4d01-ad76-4d879da1ec96"/>
+</teamserver>
+</teamservers>

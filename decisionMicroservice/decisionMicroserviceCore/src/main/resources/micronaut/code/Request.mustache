@@ -1,0 +1,44 @@
+package {{package}};
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.micronaut.core.annotation.Introspected;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Introspected
+public class Request {
+
+    @JsonProperty("{{DecisionId}}")
+    private String {{DecisionId}} = "{{defaultId}}";
+
+    public String get{{DecisionId}}() {
+        return this.{{DecisionId}};
+    }
+
+    public void set{{DecisionId}}(String {{DecisionId}}) {
+        this.{{DecisionId}} = {{DecisionId}};
+    }
+{{#inputs}}
+    @JsonProperty("{{name}}")
+    private {{type}} {{name}};
+
+    public {{type}} get{{name}}() {
+        return this.{{name}};
+    }
+
+    public void set{{name}}({{type}} {{name}}) {
+        this.{{name}} = {{name}};
+    }
+{{/inputs}}
+
+    public Map<String,Object> toMap(){
+        Map<String,Object> map = new HashMap<>();
+
+    {{#inputs}}
+        map.put("{{name}}",this.{{name}});
+    {{/inputs}}
+
+        return map;
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "outputDirectory" : "loanprod",
+  "xomPath" : "./samples/rulesetApi/loanValidationProd/loan-validation-xom.jar",
+  "ruleProject" : "./samples/rulesetApi/loanValidationProd/LoanValidation/Loan Validation Service",
+  "deploymentName" : "test deployment",
+  "ruleSetPath" : "/test_deployment/1.0/loan_validation_production/1.0"
+}

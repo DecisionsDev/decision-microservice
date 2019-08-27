@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Implementation-Title: Decision Server
+Implementation-Version: Decision Server 8.10.1.0
+Specification-Title: RuleApp Archive
+Implementation-Vendor: IBM
+

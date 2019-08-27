@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="jdbc/ilogDataSource" login="Paul" url="http://odmqabld19r.francelab.fr.ibm.com:9080/teamserver"/>
+<entry baseType="BRLRule" checksum="2500580110" projectName="Loan Validation Scoring" qualifiedName="computation.initialCorporateScore" sourceCS="7C36EE5890FB6341188274EB20F1E791" targetCS="2500580110" type="BRLRule" uuid="f8ebe74d-bf29-48fd-a9f4-a4b7cd124d14"/>
+<entry baseType="BRLRule" checksum="883663657" projectName="Loan Validation Scoring" qualifiedName="computation.neverBankruptcy" sourceCS="0D7318F328F1F68257ABA410563B7758" targetCS="883663657" type="BRLRule" uuid="2ee02474-d7ae-4410-beba-d3b55a6df36f"/>
+<entry baseType="BRLRule" checksum="369357794" projectName="Loan Validation Scoring" qualifiedName="computation.repayment" sourceCS="2E679B2A5A16A76DD823BB794D69560A" targetCS="369357794" type="BRLRule" uuid="b1ade762-dc28-4abc-8033-e300be183560"/>
+<entry baseType="DecisionOperation" checksum="2180380182" projectName="Loan Validation Scoring" qualifiedName="scoring" sourceCS="0843BE4965417AF1892C71F333FDED37" targetCS="2180380182" type="DecisionOperation" uuid="51e8a165-61db-4065-99fc-292399966857"/>
+<entry baseType="DecisionTable" checksum="2978377296" projectName="Loan Validation Scoring" qualifiedName="computation.bankruptcyScore" sourceCS="8A2BDA145736D60D5659E1320FB8A868" targetCS="2978377296" type="DecisionTable" uuid="1e28b410-f5bd-44b4-9cb6-8f9784895282"/>
+<entry baseType="DecisionTable" checksum="2749139742" projectName="Loan Validation Scoring" qualifiedName="computation.rate" sourceCS="E9431FF35C2BC260C4946533BBCAB3E6" targetCS="2749139742" type="DecisionTable" uuid="7c47ee41-f999-4157-b91a-be48d7e4facf"/>
+<entry baseType="DecisionTable" checksum="214287082" projectName="Loan Validation Scoring" qualifiedName="computation.salary2score" sourceCS="F1D13570C81F5F78FE4B61943ECD6E6E" targetCS="214287082" type="DecisionTable" uuid="59352b03-2138-4986-9347-52e771a8bb16"/>
+<entry baseType="Ruleflow" checksum="2151757699" projectName="Loan Validation Scoring" qualifiedName="computationFlow" sourceCS="26049C024CBD96CB656C1242C76FFAB9" targetCS="2151757699" type="Ruleflow" uuid="bfad24fb-ca9b-4564-80c1-8ac1fcce01c2"/>
+<entry baseType="RulePackageInfo" checksum="871425814" projectName="Loan Validation Scoring" qualifiedName="computation" sourceCS="EB85F6A2320AB7C6D91A89F35A50E069" targetCS="871425814" type="RulePackageInfo" uuid="034cc72e-0fb3-4b12-9341-281508191005"/>
+<entry baseType="RuleProjectInfo" checksum="1261483438" projectName="Loan Validation Scoring" qualifiedName="Loan Validation Scoring" sourceCS="8FC7918BA98E1DC42B9114D4790868F5" targetCS="1261483438" type="RuleProjectInfo" uuid="46932af5-a9bc-4f10-9d33-ae691074e8e0"/>
+</teamserver>
+</teamservers>

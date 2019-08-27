@@ -1,0 +1,66 @@
+package {{package}};
+
+import ilog.rules.res.model.IlrPath;
+import ilog.rules.res.session.IlrJ2SESessionFactory;
+import ilog.rules.res.session.IlrSessionRequest;
+import ilog.rules.res.session.IlrSessionResponse;
+import ilog.rules.res.session.IlrStatelessSession;
+import ilog.rules.res.session.config.IlrSessionFactoryConfig;
+import ilog.rules.res.session.config.IlrXUConfig;
+import io.micronaut.http.HttpResponse;
+import io.micronaut.http.annotation.Body;
+import io.micronaut.http.annotation.Header;
+import io.micronaut.http.annotation.Post;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import java.util.Map;
+import java.util.Optional;
+
+import static ilog.rules.res.session.config.IlrPersistenceType.MEMORY;
+
+@io.micronaut.http.annotation.Controller("{{servicePath}}")
+public class Controller {
+    private static final Logger log = LoggerFactory.getLogger(Controller.class);
+    private IlrJ2SESessionFactory factory;
+
+    @PostConstruct
+    public void init() throws Exception{
+        IlrSessionFactoryConfig factoryConfig = IlrJ2SESessionFactory.createDefaultConfig();
+        IlrXUConfig xuConfig = factoryConfig.getXUConfig();
+        xuConfig.setLogAutoFlushEnabled(true);
+        xuConfig.getPersistenceConfig().setPersistenceType(MEMORY);
+        xuConfig.getManagedXOMPersistenceConfig().setPersistenceType(MEMORY);
+        xuConfig.getConnectionPoolConfig().setMaxSize({{poolSize}});
+        this.factory = new IlrJ2SESessionFactory(factoryConfig);
+    }
+
+    @Post()
+    public HttpResponse ruleExecution(@Body Request request, @Header Optional<String> accept){
+        if (accept.isPresent() && accept.get().contains("application/json")) {
+            try {
+                log.info("rule execution");
+                IlrSessionRequest sessionRequest = factory.createRequest();
+                sessionRequest.setRulesetPath(IlrPath.parsePath("{{rulesetPath}}"));
+                sessionRequest.setForceUptodate(true);
+                IlrStatelessSession session = factory.createStatelessSession();
+
+                Map<String,Object> inputParameters = request.toMap();
+                sessionRequest.setInputParameters(inputParameters);
+
+                IlrSessionResponse sessionResponse = session.execute(sessionRequest);
+                Map<String,Object> result = sessionResponse.getOutputParameters();
+
+                Response response = new Response(result);
+                response.set{{DecisionId}}(request.get{{DecisionId}}());
+                return HttpResponse.ok().body(response);
+            } catch (Exception e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return HttpResponse.serverError();
+            }
+        }
+
+        return HttpResponse.serverError();
+    }
+}

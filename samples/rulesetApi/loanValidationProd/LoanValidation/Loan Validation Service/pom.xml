@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>decision-service</groupId>
+        <artifactId>loan-validation</artifactId>
+        <version>1.0.0</version>
+        <relativePath>..</relativePath>
+    </parent>
+
+    <artifactId>loan-validation-service</artifactId>
+    <packaging>decisionservice</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.ibm.rules.buildcommand</groupId>
+                <artifactId>rules-compiler-maven-plugin</artifactId>
+                <configuration>
+
+                    <deployments>
+          						<deployment>
+          							<name>test deployment</name>
+          						</deployment>
+                      <deployment>
+                        <!-- If you have several deployment configurations, make sure that they have different names. -->
+          							<name>production deployment</name>
+                        <!-- You must specify a classifier for each additional deployment configuration. -->
+                        <classifier>prod</classifier>
+          						</deployment>
+          					</deployments>
+
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>loan-validation-xom</artifactId>
+            <type>jar</type>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleapp-archive xsi:noNamespaceSchemaLocation="http://schemas.ilog.com/JRules/1.2/RuleAppArchive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ruleapp>
+    <ruleapp-display-name>test deployment</ruleapp-display-name>
+    <ruleapp-name>test_deployment</ruleapp-name>
+    <ruleapp-version>1.0</ruleapp-version>
+    <creation-date>1554969677655</creation-date>
+    <ruleapp-description></ruleapp-description>
+    <ruleset>
+      <ruleset-display-name>loan validation with score and grade</ruleset-display-name>
+      <ruleset-name>loan_validation_with_score_and_grade</ruleset-name>
+      <ruleset-version>1.0</ruleset-version>
+      <creation-date>1554969677658</creation-date>
+      <ruleset-description>Used for testing and simulation:
+-  input a loan request and a borrower
+- output the loan report, the grade, and the score.
+Rules from  projects : Check, Determination, Scoring
+with no extraction mechanism.
+      </ruleset-description>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine.version</ruleset-property-name>
+        <ruleset-property-value>1.40.7</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine</ruleset-property-name>
+        <ruleset-property-value>de</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.uuid</ruleset-property-name>
+        <ruleset-property-value>ad3ef3ee-ea0e-420e-b53e-348025aaf759</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.debug.enabled</ruleset-property-name>
+        <ruleset-property-value>true</ruleset-property-value>
+      </ruleset-property>
+    </ruleset>
+    <ruleset>
+      <ruleset-display-name>loan validation production</ruleset-display-name>
+      <ruleset-name>loan_validation_production</ruleset-name>
+      <ruleset-version>1.0</ruleset-version>
+      <creation-date>1554969677667</creation-date>
+      <ruleset-description>Used in production
+   - input a loan request and a borrower
+   - output the loan report.
+Rules from projects : Check, Determination and Scoring
+with an extraction mechanism through a query: only rules with the validated status are used.
+      </ruleset-description>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine.version</ruleset-property-name>
+        <ruleset-property-value>1.40.7</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.engine</ruleset-property-name>
+        <ruleset-property-value>de</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.uuid</ruleset-property-name>
+        <ruleset-property-value>7468e849-f554-4abc-aa42-9468df7a8b1a</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.debug.enabled</ruleset-property-name>
+        <ruleset-property-value>true</ruleset-property-value>
+      </ruleset-property>
+    </ruleset>
+  </ruleapp>
+</ruleapp-archive>

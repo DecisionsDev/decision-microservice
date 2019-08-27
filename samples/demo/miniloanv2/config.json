@@ -1,0 +1,11 @@
+{
+  "outputDirectory" : ".",
+  "xomPath" : "./miniloan-xom.jar",
+  "ruleProject" : "./Miniloan Service",
+  "deploymentName" : "Development",
+  "ruleSetPath" : "/Miniloan/1.0/Miniloan_ServiceRuleset/1.0",
+  "additionalProperties" : {
+    "servicePath" : "/miniloan",
+    "dockerName" : "demo/miniloan:v2"
+  }
+}

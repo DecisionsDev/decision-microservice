@@ -1,0 +1,236 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "API to invoke the execution of the decision service operation loan_validation_production.",
+    "version" : "1.0.0",
+    "title" : "loan_validation_production API"
+  },
+  "host" : "localhost:9060",
+  "basePath" : "/DecisionService/rest",
+  "schemes" : [ "http" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/LoanValidationDS/loan_validation_production" : {
+      "post" : {
+        "summary" : "Invokes the execution of the decision service operation loan_validation_production.",
+        "description" : "Executes the decision service operation loan_validation_production with the path /LoanValidationDS/loan_validation_production.",
+        "operationId" : "callloan_validation_productionDecisionServiceOperation",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "Request",
+          "description" : "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution.",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Request"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution.",
+            "schema" : {
+              "$ref" : "#/definitions/Response"
+            }
+          },
+          "default" : {
+            "description" : "Error occurring when invoking the execution of the decision service operation.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Response" : {
+      "type" : "object",
+      "properties" : {
+        "__DecisionID__" : {
+          "type" : "string",
+          "description" : "Unique identifier representing the execution of the decision service operation. If it is not specified, it will be computed automatically."
+        },
+        "report" : {
+          "$ref" : "#/definitions/Report"
+        }
+      },
+      "description" : "Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution."
+    },
+    "Report" : {
+      "type" : "object",
+      "properties" : {
+        "borrower" : {
+          "$ref" : "#/definitions/Borrower"
+        },
+        "loan" : {
+          "$ref" : "#/definitions/LoanRequest"
+        },
+        "validData" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "insuranceRequired" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "insuranceRate" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "approved" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "messages" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "yearlyInterestRate" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "monthlyRepayment" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "insurance" : {
+          "type" : "string"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "yearlyRepayment" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      }
+    },
+    "Borrower" : {
+      "type" : "object",
+      "properties" : {
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "birth" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "SSN" : {
+          "$ref" : "#/definitions/SSN"
+        },
+        "yearlyIncome" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "zipCode" : {
+          "type" : "string"
+        },
+        "creditScore" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "spouse" : {
+          "$ref" : "#/definitions/Borrower"
+        },
+        "latestBankruptcy" : {
+          "$ref" : "#/definitions/Bankruptcy"
+        }
+      }
+    },
+    "Request" : {
+      "type" : "object",
+      "properties" : {
+        "__DecisionID__" : {
+          "type" : "string",
+          "description" : "Unique identifier representing the execution of the decision service operation. If it is not specified, it will be computed automatically."
+        },
+        "borrower" : {
+          "$ref" : "#/definitions/Borrower"
+        },
+        "loan" : {
+          "$ref" : "#/definitions/LoanRequest"
+        }
+      },
+      "description" : "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution."
+    },
+    "Error" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "HTTP error code."
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "Error message."
+        },
+        "details" : {
+          "type" : "string",
+          "description" : "Detailed error message."
+        },
+        "errorCode" : {
+          "type" : "string",
+          "description" : "Product error code."
+        }
+      },
+      "description" : "Error occurring when invoking the execution of the decision service operation."
+    },
+    "LoanRequest" : {
+      "type" : "object",
+      "properties" : {
+        "numberOfMonthlyPayments" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "startDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "amount" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "loanToValue" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      }
+    },
+    "Bankruptcy" : {
+      "type" : "object",
+      "properties" : {
+        "date" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "chapter" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "reason" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SSN" : {
+      "type" : "object",
+      "properties" : {
+        "areaNumber" : {
+          "type" : "string"
+        },
+        "groupCode" : {
+          "type" : "string"
+        },
+        "serialNumber" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
