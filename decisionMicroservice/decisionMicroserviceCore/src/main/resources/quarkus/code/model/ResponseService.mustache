@@ -1,0 +1,42 @@
+package {{package}}.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
+/**
+ * Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution.
+ */
+@Schema(description = "Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution.")
+// TODO not Migrated @Validated
+public class ResponseService   {
+
+   @JsonProperty("{{DecisionId}}")
+    private String {{DecisionId}};
+
+    public String get{{DecisionId}}() {
+        return this.{{DecisionId}};
+    }
+
+    public void set{{DecisionId}}(String {{DecisionId}}) {
+        this.{{DecisionId}} = {{DecisionId}};
+    }
+
+{{#outputs}}
+    @JsonProperty("{{name}}")
+    private {{type}} {{name}};
+
+    public {{type}} get{{name}}() {
+        return this.{{name}};
+    }
+
+    public void set{{name}}({{type}} {{name}}) {
+        this.{{name}} = {{name}};
+    }
+{{/outputs}}
+
+
+}
+

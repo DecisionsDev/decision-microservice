@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//Group all the data needed for a generation
 public class GeneratorOptions {
     private final String DEFAULT_OUTPUT_DIR = "output";
     private static String DEFAULT_DOCKER_NAME = "default";

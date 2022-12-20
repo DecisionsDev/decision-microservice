@@ -1,0 +1,143 @@
+package {{package}}.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+/**
+ * Error occurring when invoking the execution of the decision service operation.
+ */
+@Schema(name="Error",description = "Error occurring when invoking the execution of the decision service operation.")
+// TODO not migrated @Validated
+public class ErrorService   {
+  @JsonProperty("code")
+  private Integer code = null;
+
+  @JsonProperty("message")
+  private String message = null;
+
+  @JsonProperty("details")
+  private String details = null;
+
+  @JsonProperty("errorCode")
+  private String errorCode = null;
+
+  public ErrorService code(Integer code) {
+    this.code = code;
+    return this;
+  }
+
+  /**
+   * HTTP error code.
+   * @return code
+  **/
+  @Schema(name="Code" , description = "HTTP error code.")
+  public Integer getCode() {
+    return code;
+  }
+
+  public void setCode(Integer code) {
+    this.code = code;
+  }
+
+  public ErrorService message(String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Error message.
+   * @return message
+  **/
+  @Schema(name="Code" , description = "HError message.")
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public ErrorService details(String details) {
+    this.details = details;
+    return this;
+  }
+
+  /**
+   * Detailed error message.
+   * @return details
+  **/
+  @Schema(name="Code" , description = "Detailed error message.")
+  public String getDetails() {
+    return details;
+  }
+
+  public void setDetails(String details) {
+    this.details = details;
+  }
+
+  public ErrorService errorCode(String errorCode) {
+    this.errorCode = errorCode;
+    return this;
+  }
+
+  /**
+   * Product error code.
+   * @return errorCode
+  **/
+  @Schema(name="ErrorCode" , description = "Product error code.")
+  public String getErrorCode() {
+    return errorCode;
+  }
+
+  public void setErrorCode(String errorCode) {
+    this.errorCode = errorCode;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ErrorService error = (ErrorService) o;
+    return Objects.equals(this.code, error.code) &&
+        Objects.equals(this.message, error.message) &&
+        Objects.equals(this.details, error.details) &&
+        Objects.equals(this.errorCode, error.errorCode);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(code, message, details, errorCode);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Error {\n");
+    
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+

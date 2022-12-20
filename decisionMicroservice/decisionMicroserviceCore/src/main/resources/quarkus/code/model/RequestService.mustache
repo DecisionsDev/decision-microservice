@@ -1,0 +1,51 @@
+package {{package}}.model;
+
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.Valid;
+
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import java.util.HashMap;
+import java.util.Map;
+/**
+ * Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution.
+ */
+@Schema(name="Request",description = "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution.")
+// TODO Not migreated @Validated
+public class RequestService   {
+      @JsonProperty("{{DecisionId}}")
+      private String {{DecisionId}} = "{{defaultId}}";
+
+      public String get{{DecisionId}}() {
+          return this.{{DecisionId}};
+      }
+
+      public void set{{DecisionId}}(String {{DecisionId}}) {
+          this.{{DecisionId}} = {{DecisionId}};
+      }
+{{#inputs}}
+    @JsonProperty("{{name}}")
+    private {{type}} {{name}};
+
+    public {{type}} get{{name}}() {
+        return this.{{name}};
+    }
+
+    public void set{{name}}({{type}} {{name}}) {
+        this.{{name}} = {{name}};
+    }
+{{/inputs}}
+
+    public Map<String,Object> toMap(){
+        Map<String,Object> map = new HashMap<>();
+
+    {{#inputs}}
+        map.put("{{name}}",this.{{name}});
+    {{/inputs}}
+
+        return map;
+    }
+}
+

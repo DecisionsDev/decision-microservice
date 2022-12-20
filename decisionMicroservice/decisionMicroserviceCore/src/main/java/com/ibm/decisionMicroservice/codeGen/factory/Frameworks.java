@@ -3,6 +3,7 @@ package com.ibm.decisionMicroservice.codeGen.factory;
 import com.ibm.decisionMicroservice.exception.NoSuchFrameworkException;
 
 public enum Frameworks {
+    QUARKUS("quarkus",new QuarkusOrchestratorFactory()),
     MICRONAUT("micronaut",new MicronautOrchestratorFactory()),
     SPRINGBOOT("spring", new SpringBootOrchestratorFactory());
 

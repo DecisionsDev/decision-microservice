@@ -1,0 +1,10 @@
+quarkus.swagger-ui.always-include=true
+quarkus.swagger-ui.path=/swagger-ui
+quarkus.container-image.group=decisionservice
+quarkus.openshift.annotations.productName="IBM Operational Decision Manager"
+quarkus.openshift.labels.productID=b1a07d4dc0364452aa6206bb6584061d
+quarkus.openshift.labels.productVersion={{ODMVersion}}
+quarkus.openshift.labels.productMetric=PROCESSOR_VALUE_UNIT
+quarkus.openshift.labels.productChargedContainers={{rulesetArtifactName}}
+quarkus.openshift.route.expose=true
+quarkus.kubernetes.deploy=true

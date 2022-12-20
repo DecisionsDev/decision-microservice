@@ -1,0 +1,42 @@
+package {{package}};
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+
+import javax.ws.rs.Produces;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
+
+import {{package}}.model.ResponseService;
+import {{package}}.model.RequestService;
+import {{package}}.model.ErrorService;
+@Tag(name = "{{rulesetPath}}", description = "the {{rulesetPath}} API")
+@Path(value = "{{servicePath}}")
+public interface DecisionApi {
+    @Operation(description = "Invokes the execution of the decision service operation  {{rulesetPath}}.",  summary = "Executes the decision service operation {{servicePath}} with the ruleset path {{rulesetPath}}.")
+    @APIResponses(value = { 
+        @APIResponse(responseCode = "200", 
+        description = "Response for the execution of the decision service operation. Contains notably the output parameters that are returned by the execution.", 
+        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseService.class))),
+        @APIResponse(responseCode = "200", 
+        description = "Error occurring when invoking the execution of the decision service operation.",
+        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorService.class)))
+    })
+
+
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @POST
+    Response callDecisionServiceOperation(@Parameter(description = "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution." ,required=true )  @Valid @RequestBody RequestService request);
+  // TODO ResponseEntity ?  ResponseEntity<Response> callminiloanrulesDecisionServiceOperation(@Parameter(description = "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution." ,required=true )  @Valid @RequestBody Request request);
+}

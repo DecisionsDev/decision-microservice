@@ -1,0 +1,114 @@
+package {{package}};
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import ilog.rules.res.model.IlrPath;
+import ilog.rules.res.session.IlrJ2SESessionFactory;
+import ilog.rules.res.session.IlrSessionRequest;
+import ilog.rules.res.session.IlrSessionResponse;
+import ilog.rules.res.session.IlrStatelessSession;
+import ilog.rules.res.session.config.IlrSessionFactoryConfig;
+import ilog.rules.res.session.config.IlrXUConfig;
+
+import static ilog.rules.res.session.config.IlrPersistenceType.MEMORY;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
+
+import java.util.Map;
+
+import javax.ws.rs.core.Response;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.validation.Valid;
+
+import {{package}}.model.RequestService;
+import {{package}}.model.ResponseService;
+@Singleton
+public class DecisionController implements DecisionApi {
+
+    private static final Logger log = LoggerFactory.getLogger(DecisionController.class);
+
+    private final ObjectMapper objectMapper;
+
+    private IlrJ2SESessionFactory j2Sefactory = null;
+
+    private IlrJ2SESessionFactory getRuleSessionFactory() {
+        if (j2Sefactory == null) {
+            log.info("Initializing Decision Runtime");
+            IlrSessionFactoryConfig factoryConfig = IlrJ2SESessionFactory.createDefaultConfig();
+            IlrXUConfig xuConfig = factoryConfig.getXUConfig();
+            xuConfig.setLogAutoFlushEnabled(true);
+            xuConfig.getPersistenceConfig().setPersistenceType(MEMORY);
+            xuConfig.getManagedXOMPersistenceConfig().setPersistenceType(MEMORY);
+            xuConfig.setRulesetUsageMonitorEnabled(false);
+            j2Sefactory = new IlrJ2SESessionFactory(factoryConfig);
+        }
+        return j2Sefactory;
+    }
+
+    @Inject
+    public DecisionController(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+    @Override
+    public Response callDecisionServiceOperation(
+            @Parameter(description = "Request for the execution of the decision service operation. Contains notably the input parameters that are used for the execution.", required = true) @Valid @RequestBody RequestService request) {
+        // String accept = currentRequest.getHeader("Accept");
+        // if (accept != null && accept.contains("application/json")) {
+        try {
+            IlrSessionRequest sessionRequest = getRuleSessionFactory().createRequest();
+            sessionRequest.setRulesetPath(IlrPath.parsePath("{{rulesetPath}}"));
+            sessionRequest.setForceUptodate(true);
+
+            Map<String, Object> inputParameters = requestToMap(request);
+            sessionRequest.setInputParameters(inputParameters);
+            sessionRequest.setTraceEnabled(false);
+            String decisionId = null;
+            if(inputParameters.containsKey("__DecisionID__")){
+                decisionId = (String)inputParameters.get("__DecisionID__");
+                inputParameters.remove("__DecisionID__");
+            }
+
+            if(inputParameters.containsKey("decisionID_")){
+                inputParameters.put("decisionID_",decisionId);
+            }
+
+            inputParameters.remove("__TraceFilter__");
+            IlrStatelessSession session = getRuleSessionFactory().createStatelessSession();
+
+            IlrSessionResponse sessionResponse = session.execute(sessionRequest);
+            Map<String, Object> result = sessionResponse.getOutputParameters();
+
+            if (decisionId !=null){
+                result.put("__DecisionID__",decisionId);
+            }
+            ResponseService response = objectMapper.convertValue(result, ResponseService.class);
+            return Response.accepted(response).build();
+        } catch (Exception e) {
+            log.error("Couldn't serialize response for content type application/json", e);
+            // TODO Return a real object See :
+            // https://developers.redhat.com/articles/2022/03/03/rest-api-error-modeling-quarkus-20#constraintviolationexceptionmapper
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    public static Map<String, Object> requestToMap(RequestService obj) {
+        Map<String, Object> map = new HashMap<>();
+        for (Field field : obj.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            try {
+                map.put(field.getName(), field.get(obj));
+            } catch (Exception e) {
+            }
+        }
+        return map;
+    }
+
+}
